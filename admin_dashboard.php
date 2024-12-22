@@ -34,10 +34,10 @@ $conn->close();
     <h1>Welcome, <?php echo htmlspecialchars($user['UserId']); ?></h1>
     <nav>
         <ul>
-            <li><a href="activities.php">活动列表</a></li>
-            <li><a href="pending_applications.php">待审批的申请</a></li>
+            <li><a href="activities_manage.php">活动列表</a></li>
+            <li><a href="pending_approvals.php">待审批的申请</a></li>
             <li><a href="user_management.php">用户管理</a></li>
-            <li><a href="my_profile.php">本用户信息</a></li>
+            <li><a href="my_admin_profile.php">本用户信息</a></li>
             <li><a href="logout.php">退出登录</a></li>
         </ul>
     </nav>

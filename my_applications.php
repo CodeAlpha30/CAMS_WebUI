@@ -16,14 +16,18 @@ $sql = "SELECT a.ActvtId, a.ActvtTitle, d.DeptName, a.ActvtTime, p.PlaceName, a.
         JOIN adminusers au ON a.PublisherId = au.UserId
         JOIN departments d ON a.DeptId = d.DeptId
         JOIN places p ON a.PlaceId = p.PlaceId
-        WHERE pr.UserId = ? AND a.ActvtTime > ? AND a.Status = 0";
+        WHERE pr.UserId = ? 
+        -- AND a.ActvtTime > ? 
+        -- AND a.Status = 0
+        ";
 
 $stmt = $conn->prepare($sql);
 if ($stmt === false) {
     // 处理 prepare 失败的情况
     die('Prepare failed: ' . $conn->error);
 }
-$stmt->bind_param("is", $userId, $currentDate);
+// $stmt->bind_param("is", $userId, $currentDate);
+$stmt->bind_param("i", $userId);
 // $stmt->execute();
 if (!$stmt->execute()) {
     // 处理 execute 失败的情况
