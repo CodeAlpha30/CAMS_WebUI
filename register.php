@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmtCommonUsers->execute();
 
     if ($stmtUserInfo->affected_rows > 0 && $stmtCommonUsers->affected_rows > 0) {
-        echo "<script>alert('注册成功');</script>";
-        header("Location: login.php");
+        echo "<script>alert('注册成功');window.location.href='login.php';</script>";
+        // header("Location: login.php");
     } else {
         echo "<script>alert('注册失败');</script>";
     }
