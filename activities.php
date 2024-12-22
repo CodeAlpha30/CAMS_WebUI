@@ -18,7 +18,9 @@ $userId = $_SESSION['UserId'];
 //         WHERE a.ActvtTime > Now() AND a.Status = 0";
 $sql = "SELECT ActvtId, ActvtTitle, DeptName, ActvtTime, PlaceName, PeopleNumRqrd, PeopleNumIn, Intro, OtherRqrments, Notes, AdminName
         FROM view_activities_details
-        WHERE ActvtTime > Now() AND Status = 0";
+        WHERE ActvtTime > Now() 
+        AND Status = 0
+        ";
 
 $stmt = $conn->prepare($sql);
 if ($stmt === false) {

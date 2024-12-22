@@ -51,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login</title>
 </head>
 <body>
+    <h1>CAMS</h1>
     <form action="" method="post">
         UserId: <input type="text" name="UserId" required><br>
         Password: <input type="password" name="Password" required><br>
