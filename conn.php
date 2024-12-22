@@ -14,11 +14,11 @@ $password = "MyRootPass"; // 数据库密码
 // }
 
 $conn = new mysqli($hostname, $username, $password, $database);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    else{
-        echo "Successfully connected.\n";
-    }
+    // if ($conn->connect_error) {
+    //     die("Connection failed: " . $conn->connect_error);
+    // }
+    // else{
+    //     echo "Successfully connected.\n";
+    // }
 
 ?>

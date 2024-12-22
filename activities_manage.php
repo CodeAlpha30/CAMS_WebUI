@@ -11,8 +11,10 @@ $userId = $_SESSION['UserId'];
 $currentDate = date("Y-m-d H:i:s");
 
 // 获取当前管理员发布的活动信息
-$sql = "SELECT a.ActvtId, a.ActvtTitle, a.DeptId, a.ActvtTime, a.PlaceId, a.PeopleNumRqrd, a.PeopleNumIn, a.Intro, a.OtherRqrments, a.Notes, a.Status, a.AdministrationAuth
+$sql = "SELECT a.ActvtId, a.ActvtTitle, a.DeptId, d.DeptName, a.ActvtTime, a.PlaceId, p.PlaceName, a.PeopleNumRqrd, a.PeopleNumIn, a.Intro, a.OtherRqrments, a.Notes, a.Status, a.AdministrationAuth
         FROM activities a
+        LEFT JOIN departments d ON a.DeptId = d.DeptId
+        LEFT JOIN places p ON a.PlaceId = p.PlaceId
         WHERE a.PublisherId = ? 
         -- AND a.ActvtTime > ? 
         AND a.Status <> 2";
@@ -75,8 +77,10 @@ $resultPlace = $stmtPlace->get_result();
                     
                     <label for="DeptId">部门ID:</label>
                     <select name="DeptId" id="DeptId">
-                        <option value="<?php echo $row['DeptId']; ?>"><?php echo htmlspecialchars($row['DeptId']); ?></option>
-                        <!-- Populate departments here -->
+                    <option value="<?php echo $row['DeptId']; ?>"><?php echo htmlspecialchars($row['DeptName']); ?></option>
+                        <?php while ($deptRow = $resultDept->fetch_assoc()) { ?>
+                            <option value="<?php echo $deptRow['DeptId']; ?>"><?php echo htmlspecialchars($deptRow['DeptName']); ?></option>
+                        <?php } ?>
                     </select><br>
                     
                     <label for="ActvtTime">活动时间:</label>
@@ -84,8 +88,10 @@ $resultPlace = $stmtPlace->get_result();
                     
                     <label for="PlaceId">地点ID:</label>
                     <select name="PlaceId" id="PlaceId">
-                        <option value="<?php echo $row['PlaceId']; ?>"><?php echo htmlspecialchars($row['PlaceId']); ?></option>
-                        <!-- Populate places here -->
+                    <option value="<?php echo $row['PlaceId']; ?>"><?php echo htmlspecialchars($row['PlaceName']); ?></option>
+                        <?php while ($placeRow = $resultPlace->fetch_assoc()) { ?>
+                            <option value="<?php echo $placeRow['PlaceId']; ?>"><?php echo htmlspecialchars($placeRow['PlaceName']); ?></option>
+                        <?php } ?>
                     </select><br>
                     
                     <label for="PeopleNumRqrd">所需人数:</label>
