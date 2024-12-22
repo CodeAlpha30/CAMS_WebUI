@@ -1,6 +1,6 @@
 <?php
 // 用来接受showTable.php传来的表名，并查询这个表的所有内容
-include 'conn.php';
+include 'conn_old.php';
 include 'fun.php';
 
 // 接受showTable.php传来的表名

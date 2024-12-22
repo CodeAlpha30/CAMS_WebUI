@@ -1,7 +1,7 @@
 <?php
 
 // 连接数据库
-include 'conn.php';
+include 'conn_old.php';
 include 'fun.php';
 
 // 获取表名，id和数据，设计sql更新$table中id值为$id的数据

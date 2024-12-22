@@ -1,7 +1,7 @@
 <?php
 
 // 导入conn.php文件
-include 'conn.php';
+include 'conn_old.php';
 include 'fun.php';
 
 // 接受从table.php传来的表名和id值，删除这一行数据

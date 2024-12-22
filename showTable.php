@@ -1,6 +1,6 @@
 <?php
 // 导入conn.php文件
-include 'conn.php';
+include 'conn_old.php';
 // 展示这个数据库中所有的表
 $sql = "SHOW TABLES";
 $result = mysqli_query($conn, $sql);

@@ -1,7 +1,7 @@
 <?php
 
 // 导入conn.php文件
-include 'conn.php';
+include 'conn_old.php';
 include 'fun.php';
 
 // 接受table.php传来的表名和每一个字段的值，向数据库中的这个表添加一行数据

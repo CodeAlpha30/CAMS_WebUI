@@ -2,6 +2,8 @@
 // login.php
 include 'conn.php'; // 包含数据库连接文件
 
+session_start(); // 开始session
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 从表单获取用户名和密码
     $userId = $_POST['UserId'];
@@ -9,9 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 连接数据库
     // $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    // if ($conn->connect_error) {
+    //     die("Connection failed: " . $conn->connect_error);
+    // }
 
     // 验证用户名和密码
     $sql = "SELECT * FROM userinfo WHERE UserId = ? AND Password = ?";
@@ -23,6 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         // 用户名和密码正确
         $row = $result->fetch_assoc();
+        $_SESSION['UserId'] = $row['UserId']; // 存储用户ID到session
+        $_SESSION['isAdmin'] = $row['isAdmin']; // 存储用户是否为管理员到session
+        $_SESSION['UserName'] = $row['UserName']; // 存储用户名到session
+
         if ($row['isAdmin'] == 1) {
             // 跳转到管理员界面
             header("Location: admin_dashboard.php");
