@@ -1,9 +1,10 @@
 <?php
 include 'conn.php'; // 确保包含数据库连接
+session_start();
 
-if (isset($_POST['ActvtId']) && isset($_POST['UserId'])) {
-    $actvtId = $_POST['ActvtId'];
-    $userId = $_POST['UserId'];
+if (isset($_GET['ActvtId']) && isset($_GET['UserId'])) {
+    $actvtId = $_GET['ActvtId'];
+    $userId = $_GET['UserId'];
 
     // 更新参与状态为拒绝
     $sql = "UPDATE participation SET Status = 2 WHERE ActvtId = ? AND UserId = ?";
@@ -18,4 +19,7 @@ if (isset($_POST['ActvtId']) && isset($_POST['UserId'])) {
 } else {
     echo "Invalid request.";
 }
+
+header("Location: application_view.php?ActvtId=" . $actvtId); // 重定向到活动管理页面
+exit;
 ?>

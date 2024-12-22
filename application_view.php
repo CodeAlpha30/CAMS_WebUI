@@ -157,10 +157,10 @@ $resultParticipation = $stmtParticipation->get_result();
                 <td>
                     <?php if ($row['Status'] != 11) { ?>
                         <?php if ($row['Status'] != 1 && $row['Status'] != 5) { ?>
-                            <button onclick="approveApplication(<?php echo $row['ActvtId']; ?>, <?php echo $row['UserId']; ?>)">审核通过</button>
+                            <button onclick="confirm('确定审核通过吗？') ? location.href='approve.php?ActvtId=<?php echo $row['ActvtId']; ?>&UserId=<?php echo $row['UserId']; ?>' : ''">审核通过</button>
                         <?php } ?>
                         <?php if ($row['Status'] != 1 && $row['Status'] != 2 && $row['Status'] != 5) { ?>
-                            <button onclick="rejectApplication(<?php echo $row['ActvtId']; ?>, <?php echo $row['UserId']; ?>)">拒绝申请</button>
+                            <button onclick="confirm('确定拒绝申请吗？') ? location.href='reject.php?ActvtId=<?php echo $row['ActvtId']; ?>&UserId=<?php echo $row['UserId']; ?>' : ''">拒绝申请</button>
                         <?php } ?>
                     <?php } ?>
                 </td>
