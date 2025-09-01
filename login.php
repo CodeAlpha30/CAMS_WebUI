@@ -46,17 +46,92 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('LoginPageBackg0.jpg'); /* 设置背景图片 */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-card {
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            opacity: 0.9; /* 设置透明度为50% */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .login-card input[type="text"],
+        .login-card input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-card input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .login-card button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .login-card input[type="submit"]:hover,
+        .login-card button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function goToLink() {
+            window.location.href = 'register.php';
+        }
+    </script>
 </head>
 <body>
-    <h1>CAMS</h1>
-    <form action="" method="post">
-        UserId: <input type="text" name="UserId" required><br>
-        Password: <input type="password" name="Password" required><br>
-        <input type="submit" value="Login">
-        <a href="register.php">Register</a>
-    </form>
+    <div class="login-card">
+        <h2>CAMS Login</h2>
+        <form action="" method="post">
+            <input type="text" placeholder="UserId" name="UserId" required>
+            <input type="password" placeholder="Password" name="Password" required>
+            <input type="submit" value="Login">
+            <button onclick="goToLink()">Register</button>
+        </form>
+    </div>
 </body>
 </html>
