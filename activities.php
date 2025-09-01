@@ -20,6 +20,7 @@ $sql = "SELECT ActvtId, ActvtTitle, DeptName, ActvtTime, PlaceName, PeopleNumRqr
         FROM view_activities_details
         WHERE ActvtTime > Now() 
         AND Status = 0
+        AND PeopleNumRqrd > PeopleNumIn
         ";
 
 $stmt = $conn->prepare($sql);
@@ -80,6 +81,8 @@ $result = $stmt->get_result();
                 ?>
                 <?php if ($participationResult->num_rows == 0 && $row['PeopleNumIn'] < $row['PeopleNumRqrd']) { ?>
                     <button onclick="addParticipation(<?php echo $row['ActvtId']; ?>)">添加</button>
+                <?php } else if ($row['PeopleNumIn'] >= $row['PeopleNumRqrd']) { ?>
+                    <p>Status: 人数已满，<?php echo $participationStatus; ?></p>
                 <?php } else { ?>
                     <button onclick="withdrawParticipation(<?php echo $row['ActvtId']; ?>)">撤回申请</button>
                     <p>Status: <?php echo $participationStatus; ?></p>
